@@ -13,14 +13,12 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZZZ");
 
-            // 비영속 상태
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("helloJPA");
-
-            // 영속 상태로 전환
-            em.persist(member);
+            if (member.getName().equals("ZZZZZZ")) {
+                em.persist(member);
+            }
 
             tx.commit();
         } catch (Exception e) {
