@@ -13,12 +13,13 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = em.find(Member.class, 150L);
-            member.setName("ZZZZZZ");
+            Member member = new Member();
 
-            if (member.getName().equals("ZZZZZZ")) {
-                em.persist(member);
-            }
+            member.setId(3L);
+            member.setUsername("C");
+            member.setRoleType(RoleType.GUEST);
+
+            em.persist(member);
 
             tx.commit();
         } catch (Exception e) {
